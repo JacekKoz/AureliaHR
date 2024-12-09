@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import bearIcon from "../assets/bear-icon.svg";
 import Button from "../components/Button";
-import Textbox from "../components/Textbox";
+import Textbox from "../components/Task/Textbox";
 import { useSelector } from "react-redux";
 
 const Login = () => {

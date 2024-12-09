@@ -109,9 +109,6 @@ const MobileSidebar = () => {
 };
   
 function App() {
- 
-
-
 
   return (
     <main className='w-full min-h-screen bg-bg_color_1'>
