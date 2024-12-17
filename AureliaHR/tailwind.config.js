@@ -17,8 +17,8 @@ export default {
       // button_color: "#500000",
     },
     boxShadow: {
-      sm:'0px 2px 4px 0px rgba(11, 10, 55, 0.15',
-      lg:'0px 8px 20px 0px rgba(18, 16, 99, 0.06',
+      sm:'0px 2px 4px 0px rgba(11, 10, 55, 0.15)',
+      lg:'0px 8px 20px 0px rgba(18, 16, 99, 0.06)',
       inner: 'inset 0 0 10px rgba(0, 0, 0, 0.25)',
     },
     fontSize: {

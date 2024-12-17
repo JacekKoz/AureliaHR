@@ -5,16 +5,16 @@ import { IoClose } from "react-icons/io5"
 import { useDispatch, useSelector } from "react-redux"
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom"
 import { Toaster } from "sonner"
+import { sidebarLinks } from "./assets/sidebarLinks"
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
 import Dashboard from "./pages/Dashboard"
 import Login from "./pages/Login"
 import Tasks from "./pages/Tasks"
-import TasksDetails from "./pages/TasksDetails"
 import Team from "./pages/Team"
-import Trash from "./pages/Trash"
 import { setOpenSidebar } from "./redux/slices/authSlice"
-import { sidebarLinks } from "./assets/sidebarLinks"
+import Trash from "./pages/Trash"
+import TaskDetails from "./pages/TaskDetails"
 
 function Layout() {
   const { user } = useSelector((state) => state.auth)
@@ -114,14 +114,15 @@ function App() {
     <main className='w-full min-h-screen bg-bg_color_1'>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Navigate to="/dashboard"/>}/>
-          <Route path='/dashboard' element={<Dashboard/>} />
-          <Route path='/tasks' element={<Tasks/>} />
-          <Route path='/completed/:status' element={<Tasks/>} />
-          <Route path='/todo/:status' element={<Tasks/>} />
-          <Route path='/team' element={<Team/>} />
-          <Route path='/trash' element={<Trash/>} />
-          <Route path='/task/:id' element={<TasksDetails/>} />
+          <Route index path='/' element={<Navigate to='/dashboard' />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/tasks' element={<Tasks />} />
+          <Route path='/completed/:status' element={<Tasks />} />
+          <Route path='/in-progress/:status' element={<Tasks />} />
+          <Route path='/todo/:status' element={<Tasks />} />
+          <Route path='/team' element={<Team />} />
+          <Route path='/trashed' element={<Trash />} />
+          <Route path='/task/:id' element={<TaskDetails />} />
         </Route>
 
         <Route path='/log-in' element={<Login/>} />

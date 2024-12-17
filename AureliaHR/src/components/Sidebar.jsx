@@ -1,6 +1,6 @@
 import React from "react";
 import { sidebarLinks } from "../assets/sidebarLinks";
-import settingIcon from "../assets/settings-icon.svg/"
+import settingIcon from "../assets/img/settings-icon.svg/"
 
 const Sidebar = () => (
   <div className="transition-all ease-in-out delay-150 duration-500 bg-accent_color_1 text-black h-[100%] min-h-[100vh] w-[5rem] hover:w-[15.2rem] font-vidaloka flex flex-col items-center py-5 group">

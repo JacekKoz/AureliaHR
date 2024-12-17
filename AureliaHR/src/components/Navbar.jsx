@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import searchIcon from '../assets/search-icon.svg';
+import searchIcon from '../assets/img/search-icon.svg';
 import { setOpenSidebar } from "../redux/slices/authSlice";
 import UserAvatar from "./UserAvatar";
 import NotificationPanel from "./NotificationPanel";
