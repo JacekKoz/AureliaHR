@@ -3,7 +3,7 @@ import { sidebarLinks } from "../assets/sidebarLinks";
 import settingIcon from "../assets/img/settings-icon.svg/"
 
 const Sidebar = () => (
-  <div className="transition-all ease-in-out delay-150 duration-500 bg-accent_color_1 text-black h-[100%] min-h-[100vh] w-[5rem] hover:w-[15.2rem] font-vidaloka flex flex-col items-center py-5 group">
+  <div className="transition-all ease-in-out delay-150 duration-500 bg-bg_color_2 text-white h-[100%] min-h-[100vh] w-[5rem] hover:w-[15.2rem] font-vidaloka flex flex-col items-center py-5 group">
     <div className="mb-8 flex items-center justify-center w-full px-5">
       <h1 className="text-3xl font-bold flex-shrink-0">A</h1>
       <h1 className="text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 whitespace-nowrap overflow-hidden text-ellipsis">
@@ -15,7 +15,7 @@ const Sidebar = () => (
         <a
           key={link.href}
           href={link.href}
-          className="flex items-center w-full text-lg px-3 py-2 hover:bg-border_color rounded-full transition-all"
+          className="flex items-center w-full text-lg px-3 py-2 hover:bg-grey_400 rounded-full transition-all"
         >
           <img
             src={link.icon}
@@ -31,7 +31,7 @@ const Sidebar = () => (
     <div className="mt-auto w-full px-3">
       <a
         href="/settings"
-        className="flex items-center w-full text-lg px-3 py-2 hover:bg-border_color rounded-full transition-all"
+        className="flex items-center w-full text-lg px-3 py-2 hover:bg-grey_400 rounded-full transition-all"
       >
         <img
           src={settingIcon}

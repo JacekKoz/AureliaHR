@@ -59,6 +59,7 @@ const NotificationPanel = () => {
   // const [markAsRead] = useMarkNotiAsReadMutation()
 
   const readHandler = () => {}
+  const viewHandler = () => {}
 
   const callsToAction = [
     { name : "Cancel", href: "#", icon: "" },
@@ -73,11 +74,11 @@ const NotificationPanel = () => {
   return (
     <>
       <Popover className='relative'>
-      <Popover.Button className='inline-flex items-center outline-none'>
-          <div className='w-10 h-10 flex items-center justify-center text-black relative'>
+        <Popover.Button className='inline-flex items-center outline-none'>
+          <div className='w-10 h-10 flex items-center justify-center text-white relative'>
             <IoIosNotificationsOutline className='text-2xl' />
             {data?.length > 0 && (
-              <span className='absolute text-center top-1 right-1 text-sm text-white font-poppins w-4 h-4 rounded-full bg-red'>
+              <span className='absolute text-center top-0 right-1 text-xs text-white font-poppins w-4 h-4 rounded-full bg-red'>
                 {data?.length}
               </span>
             )}
@@ -96,14 +97,14 @@ const NotificationPanel = () => {
           <Popover.Panel className='absolute -right-16 md:-right-2 z-10 mt-5 flex w-screen max-w-max px-4'>
             {({ close }) =>
               data?.length > 0 && (
-                <div className='w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-bg_color_1/5'>
+                <div className='w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-offset-border_color/5'>
                   <div className='p-4'>
                     {data?.slice(0, 5).map((item, index) => (
                       <div
                         key={item._id + index}
                         className='group relative flex gap-x-4 rounded-xl p-4  hover:bg-accent_color_1'
                       >
-                        <div className='mt-1 h-8 w-8 flex items-center justify-center rounded-lg bg-white group-hover:bg-accent_color_1'>
+                        <div className='mt-1 h-8 w-8 flex items-center justify-center rounded-lg bg-white group-hover:bg-grey_400'>
                           {ICONS[item.notiType]}
                         </div>
 
@@ -125,14 +126,14 @@ const NotificationPanel = () => {
                     ))}
                   </div>
 
-                  <div className='grid grid-cols-2 divide-x bg-accent_color_1 '>
+                  <div className='grid grid-cols-2 divide-x bg-grey_400 '>
                     {callsToAction.map((item) => (
                       <Link
                         key={item.name}
                         onClick={
                           item?.onClick ? () => item.onClick() : () => close()
                         }
-                        className='flex items-center justify-center gap-x-2.5 p-3 font-semibold text-black hover:bg-accent_color_2 transition-all'
+                        className='flex items-center justify-center gap-x-2.5 p-3 font-semibold text-white hover:bg-border_color transition-all'
                       >
                         {item.name}
                       </Link>

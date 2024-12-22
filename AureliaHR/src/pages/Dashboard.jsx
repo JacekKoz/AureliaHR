@@ -6,6 +6,80 @@ import { FaArrowsToDot } from "react-icons/fa6";
 import moment from "moment";
 import { summary } from '../assets/data';
 import clsx from 'clsx';
+import Chart from '../components/Chart';
+import { BGS, PRIOTITYSTYELS, TASK_TYPE } from '../utils';
+import UserInfo from '../components/UserInfo';
+
+const TaskTable = ({ tasks }) => {
+    const ICONS = {
+      high: <MdKeyboardDoubleArrowUp/>,
+      medium: <MdKeyboardArrowUp/>,
+      low: <MdKeyboardArrowDown/>
+    }
+
+    const TableHeader = () => (
+      <thead className=' border-b border-grey_100'>
+        <tr className='text-white text-left'>
+          <th className='py-2'>Task Title</th>
+          <th className='py-2'>Priority</th>
+          <th className='py-2'>Team</th>
+          <th className='py-2 hidden md:block'>Created At</th>
+        </tr>
+      </thead>
+    )
+
+    const TableRow = ({ task }) => <tr className='border-b border-grey_200 text-white hover:bg-grey_400'>
+      <td className='py-2'>
+        <div className='flex item-center gap-2'>
+          <div
+          className={clsx("w-4 h-4 rounded-full", TASK_TYPE[task.stage])}
+          />
+          <p className='text-base text-white'>{task.title}</p>
+        </div>
+      </td>
+
+      <td className='py-2'>
+        <div className='flex gap-1 item-center'>
+          <span className={clsx("text-lg", PRIOTITYSTYELS[task.priority])}>
+            {ICONS[task.priority]}
+          </span>
+          <span className='capitalize'>{task.priority}</span>
+        </div>
+      </td>
+
+      <td className='py-2'>
+        <div className='flex'>
+          {task.team.map((m, index) => (
+            <div
+              key={index}
+              className={clsx("w-7 h-7 rounded-full text-white flex items-center justify-center text-sm -mr-1", BGS[index % BGS.length])}
+            >
+              <UserInfo user={m}/>
+            </div>
+          ))}
+        </div>
+      </td>
+    </tr>
+
+    return (
+      <>
+        <div className='w-full md:w-2/3 bg-grey_300 px-2 md:px-4 pt-4 pb-4 shadow-md rounded '>
+          <table className='w-full'>
+            <TableHeader/>
+            <tbody>
+              {tasks?.map((task, id) => (
+                  <TableRow
+                    key={id}
+                    task={task}
+                  />
+                ))}
+            </tbody>
+          </table>
+
+        </div>
+      </>
+    )
+}
 
 const Dashboard = () => {
 
@@ -44,11 +118,11 @@ const Dashboard = () => {
 
   const Card = ({ label, count, bg, icon}) => {
     return (
-      <div className='w-full h-32 bg-bg_color_2 p-3 shadow-sm rounded-md  flex item-center justify-between'>
+      <div className='w-full h-32 bg-grey_300 p-3 shadow-sm rounded-md  flex item-center justify-between text-white'>
         <div className='h-full flex flex-1 flex-col justify-between font-poppins'>
-          <p className='text-base text-black'>{label}</p>
+          <p className='text-base '>{label}</p>
           <span className='text-2xl '>{count}</span>
-          <span className='text-sm text-black'>{"110 last month"}</span>
+          <span className='text-sm text-grey_200'>{"110 last month"}</span>
         </div>
 
         <div className={clsx("w-10 h-10 rounded-full flex items-center justify-center text-white", bg)}>
@@ -73,6 +147,18 @@ const Dashboard = () => {
           ))
         }
       </div>
+
+      <div className='w-full bg-grey_300 my-16 p-4 rounded shadow-sm'>
+        <h4 className='text-xl text-white font-poppins'>Chart by Priority</h4>
+        <Chart/>
+      </div>
+
+      <div className='w-full flex flex-col md:flex-row gap-4 2xl:gap-10 py-8'>
+          <TaskTable
+          tasks={summary.last10Task}
+          />
+      </div>
+
     </div>
   )
 }
