@@ -7,7 +7,7 @@ import moment from "moment";
 import { summary } from '../assets/data';
 import clsx from 'clsx';
 import Chart from '../components/Chart';
-import { BGS, PRIOTITYSTYELS, TASK_TYPE } from '../utils';
+import { BGS, getInitials, PRIOTITYSTYELS, TASK_TYPE } from '../utils';
 import UserInfo from '../components/UserInfo';
 
 const TaskTable = ({ tasks }) => {
@@ -16,6 +16,7 @@ const TaskTable = ({ tasks }) => {
       medium: <MdKeyboardArrowUp/>,
       low: <MdKeyboardArrowDown/>
     }
+    
 
     const TableHeader = () => (
       <thead className=' border-b border-grey_100'>
@@ -59,6 +60,11 @@ const TaskTable = ({ tasks }) => {
           ))}
         </div>
       </td>
+      <td className='py02 hidden md:block'>
+        <span className='text-base text-grey_100'>
+          {moment(task?.date).fromNow()}
+        </span>
+      </td>
     </tr>
 
     return (
@@ -80,6 +86,60 @@ const TaskTable = ({ tasks }) => {
       </>
     )
 }
+
+const UserTable = ({ users }) => {
+  const TableHeader = () => (
+    <thead className='border-b border-white'>
+      <tr className='text-white  text-left'>
+        <th className='py-2'>Full Name</th>
+        <th className='py-2'>Status</th>
+        <th className='py-2'>Created At</th>
+      </tr>
+    </thead>
+  );
+
+  const TableRow = ({ user }) => (
+    <tr className='border-b border-grey_200 text-grey_100 hover:bg-grey_400'>
+      <td className='py-2'>
+        <div className='flex items-center gap-3'>
+          <div className='w-9 h-9 rounded-full text-white flex items-center justify-center text-sm bg-accent_color_purple'>
+            <span className='text-center'>{getInitials(user?.name)}</span>
+          </div>
+
+          <div>
+            <p> {user.name}</p>
+            <span className='text-xs text-grey_200'>{user?.role}</span>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <p
+          className={clsx(
+            "w-fit px-3 py-1 rounded-full text-sm",
+            user?.isActive ? "bg-accent_color_blue" : "bg-button_color"
+          )}
+        >
+          {user?.isActive ? "Active" : "Disabled"}
+        </p>
+      </td>
+      <td className='py-2 text-sm'>{moment(user?.createdAt).fromNow()}</td>
+    </tr>
+  );
+
+  return (
+    <div className='w-full md:w-1/3 bg-grey_300 h-fit px-2 md:px-6 py-4 shadow-md rounded'>
+      <table className='w-full mb-5'>
+        <TableHeader />
+        <tbody>
+          {users?.map((user, index) => (
+            <TableRow key={index + user?._id} user={user} />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 const Dashboard = () => {
 
@@ -154,9 +214,9 @@ const Dashboard = () => {
       </div>
 
       <div className='w-full flex flex-col md:flex-row gap-4 2xl:gap-10 py-8'>
-          <TaskTable
-          tasks={summary.last10Task}
-          />
+        <TaskTable tasks={summary.last10Task}/>
+
+        <UserTable users={summary.users}/>
       </div>
 
     </div>

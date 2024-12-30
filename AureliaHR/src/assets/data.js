@@ -4,7 +4,7 @@ export const summary = {
     {
       _id: "65c5f12ab5204a81bde866a9",
       title: "Test task",
-      date: "2024-02-09T00:00:00.000Z",
+      date: "2024-12-19T00:00:00.000Z",
       priority: "high",
       stage: "todo",
       assets: [
@@ -527,7 +527,7 @@ export const summary = {
       name: "New User",
       title: "Designer",
       role: "Developer",
-      isActive: true,
+      isActive: false,
       createdAt: "2024-02-09T09:38:07.765Z",
     },
     {
