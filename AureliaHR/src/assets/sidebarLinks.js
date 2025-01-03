@@ -7,11 +7,11 @@ import teamIcon from "../assets/img/team-icon.svg";
 import trashIcon from "../assets/img/trash-icon.svg";
 
 export const sidebarLinks = [
-  { href: "/dashboard", label: "Dashboard", icon: dashboardIcon },
+    { href: "/dashboard", label: "Dashboard", icon: dashboardIcon },
     { href: "/tasks", label: "Tasks", icon: tasksIcon },
-    { href: "/completed", label: "Completed", icon: completedIcon },
-    { href: "/in-progress", label: "In Progress", icon: inProgressIcon },
-    { href: "/to-do", label: "To Do", icon: toDoIcon },
+    { href: "/completed/completed", label: "Completed", icon: completedIcon },
+    { href: "/in-progress/in progress", label: "In Progress", icon: inProgressIcon },
+    { href: "/todo/todo", label: "To Do", icon: toDoIcon },
     { href: "/team", label: "Team", icon: teamIcon },
     { href: "/trashed", label: "Trash", icon: trashIcon },
 ];

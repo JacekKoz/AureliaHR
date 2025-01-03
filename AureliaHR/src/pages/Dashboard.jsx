@@ -89,7 +89,7 @@ const TaskTable = ({ tasks }) => {
 
 const UserTable = ({ users }) => {
   const TableHeader = () => (
-    <thead className='border-b border-white'>
+    <thead className='border-b border-white font-poppins'>
       <tr className='text-white  text-left'>
         <th className='py-2'>Full Name</th>
         <th className='py-2'>Status</th>
@@ -99,7 +99,7 @@ const UserTable = ({ users }) => {
   );
 
   const TableRow = ({ user }) => (
-    <tr className='border-b border-grey_200 text-grey_100 hover:bg-grey_400'>
+    <tr className='border-b border-grey_200 text-grey_100 hover:bg-grey_400 font-poppins'>
       <td className='py-2'>
         <div className='flex items-center gap-3'>
           <div className='w-9 h-9 rounded-full text-white flex items-center justify-center text-sm bg-accent_color_purple'>
@@ -128,7 +128,7 @@ const UserTable = ({ users }) => {
   );
 
   return (
-    <div className='w-full md:w-1/3 bg-grey_300 h-fit px-2 md:px-6 py-4 shadow-md rounded'>
+    <div className='w-full md:w-1/3 bg-grey_300 h-fit px-2 md:px-6 py-4 shadow-md rounded font-poppins'>
       <table className='w-full mb-5'>
         <TableHeader />
         <tbody>
@@ -178,7 +178,7 @@ const Dashboard = () => {
 
   const Card = ({ label, count, bg, icon}) => {
     return (
-      <div className='w-full h-32 bg-grey_300 p-3 shadow-sm rounded-md  flex item-center justify-between text-white'>
+      <div className='w-full h-32 bg-grey_300 p-3 shadow-sm rounded-md  flex item-center justify-between text-white font-poppins'>
         <div className='h-full flex flex-1 flex-col justify-between font-poppins'>
           <p className='text-base '>{label}</p>
           <span className='text-2xl '>{count}</span>
@@ -193,7 +193,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className='h-full py-4 '>
+    <div className='h-full py-4 font-poppins'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
         {
           stats.map(({icon, bg, label, total}, index) => (
