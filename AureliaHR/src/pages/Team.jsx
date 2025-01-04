@@ -93,7 +93,7 @@ const Team = () => {
           <Button
             label='Add New User'
             icon = {<IoMdAdd className='text-lg font-bold'/>}
-            className={'flex flex-row-reverse gap-1 items-center bg-button_color text-white rounded-md 2xl:py-2.5'}
+            className={'flex flex-row-reverse gap-1 items-center font-bold bg-button_color text-white rounded-md 2xl:py-2.5'}
             onClick={() => setOpen(true)}
           />
         </div>
