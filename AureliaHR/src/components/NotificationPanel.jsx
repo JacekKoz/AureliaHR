@@ -44,7 +44,7 @@ const data = [
 
 const ICONS = {
   alert: (
-    <HiBellAlert className='h-5 w-5 text-black group-hover:text-border_color' />
+    <HiBellAlert className='h-5 w-5 text-white group-hover:text-accent_color_yellow' />
   ),
   message: (
     <BiSolidMessageRounded className='h-5 w-5 text-black group-hover:text-border_color' />
@@ -97,14 +97,14 @@ const NotificationPanel = () => {
           <Popover.Panel className='absolute -right-16 md:-right-2 z-10 mt-5 flex w-screen max-w-max px-4'>
             {({ close }) =>
               data?.length > 0 && (
-                <div className='w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-offset-border_color/5'>
+                <div className='w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-grey_400 text-sm leading-6 shadow-lg ring-1 ring-offset-border_color/5'>
                   <div className='p-4'>
                     {data?.slice(0, 5).map((item, index) => (
                       <div
                         key={item._id + index}
-                        className='group relative flex gap-x-4 rounded-xl p-4  hover:bg-accent_color_1'
+                        className='group relative flex gap-x-4 rounded-xl p-4  hover:bg-grey_300 transition-all'
                       >
-                        <div className='mt-1 h-8 w-8 flex items-center justify-center rounded-lg bg-white group-hover:bg-grey_400'>
+                        <div className='mt-1 h-8 w-8 flex items-center justify-center rounded-lg bg-transparent'>
                           {ICONS[item.notiType]}
                         </div>
 
@@ -112,13 +112,13 @@ const NotificationPanel = () => {
                           className='cursor-pointer'
                           onClick={() => viewHandler(item)}
                         >
-                          <div className='flex items-center gap-3 font-semibold text-black capitalize'>
+                          <div className='flex items-center gap-3 font-semibold text-white capitalize'>
                             <p> {item.notiType}</p>
                             <span className='text-xs font-normal lowercase'>
                               {moment(item.createdAt).fromNow()}
                             </span>
                           </div>
-                          <p className='line-clamp-1 mt-1 text-black'>
+                          <p className='line-clamp-1 mt-1 text-white'>
                             {item.text}
                           </p>
                         </div>
@@ -133,7 +133,7 @@ const NotificationPanel = () => {
                         onClick={
                           item?.onClick ? () => item.onClick() : () => close()
                         }
-                        className='flex items-center justify-center gap-x-2.5 p-3 font-semibold text-white hover:bg-border_color transition-all'
+                        className='flex items-center justify-center gap-x-2.5 p-3 font-semibold text-white hover:bg-grey_300 transition-all'
                       >
                         {item.name}
                       </Link>

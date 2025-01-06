@@ -26,28 +26,28 @@ export default function ConfirmatioDialog({
           <Dialog.Title as='h3' className=''>
             <p
               className={clsx(
-                "p-3 rounded-full ",
+                "p-3 rounded-full text-white",
                 type === "restore" || type === "restoreAll"
-                  ? "text-yellow-600 bg-yellow-100"
-                  : "text-red-600 bg-red-200"
+                  ? "text-white bg-accent_color_yellow"
+                  : "text-white bg-red"
               )}
             >
               <FaQuestion size={60} />
             </p>
           </Dialog.Title>
 
-          <p className='text-center text-gray-500'>
+          <p className='text-center text-white'>
             {msg ?? "Are you sure you want to delete the selected record?"}
           </p>
 
-          <div className='bg-gray-50 py-3 sm:flex sm:flex-row-reverse gap-4'>
+          <div className=' py-3 sm:flex sm:flex-row-reverse gap-4'>
             <Button
               type='button'
               className={clsx(
                 " px-8 text-sm font-semibold text-white sm:w-auto",
                 type === "restore" || type === "restoreAll"
-                  ? "bg-yellow-600"
-                  : "bg-red-600 hover:bg-red-500"
+                  ? "bg-button_color"
+                  : "bg-red hover:bg-red"
               )}
               onClick={onClick}
               label={type === "restore" ? "Restore" : "Delete"}
@@ -55,7 +55,7 @@ export default function ConfirmatioDialog({
 
             <Button
               type='button'
-              className='bg-white px-8 text-sm font-semibold text-gray-900 sm:w-auto border'
+              className='bg-white px-8 text-sm font-semibold text-black sm:w-auto border'
               onClick={() => closeDialog()}
               label='Cancel'
             />
@@ -76,21 +76,21 @@ export function UserAction({ open, setOpen, onClick = () => {} }) {
       <ModalWrapper open={open} setOpen={closeDialog}>
         <div className='py-4 w-full flex flex-col gap-4 items-center justify-center'>
           <Dialog.Title as='h3' className=''>
-            <p className={clsx("p-3 rounded-full ", "text-red-600 bg-red-200")}>
+            <p className={clsx("p-3 rounded-full ", "text-white bg-red")}>
               <FaQuestion size={60} />
             </p>
           </Dialog.Title>
 
-          <p className='text-center text-gray-500'>
-            {"Are you sure you want to activate or deactive this account?"}
+          <p className='text-center text-white'>
+            {"Are you sure you want to activate or deactivate this account?"}
           </p>
 
-          <div className='bg-gray-50 py-3 sm:flex sm:flex-row-reverse gap-4'>
+          <div className='bg-grey_200 py-3 sm:flex sm:flex-row-reverse gap-4'>
             <Button
               type='button'
               className={clsx(
                 " px-8 text-sm font-semibold text-white sm:w-auto",
-                "bg-red-600 hover:bg-red-500"
+                "bg-red hover:bg-red/80"
               )}
               onClick={onClick}
               label={"Yes"}
@@ -98,7 +98,7 @@ export function UserAction({ open, setOpen, onClick = () => {} }) {
 
             <Button
               type='button'
-              className='bg-white px-8 text-sm font-semibold text-gray-900 sm:w-auto border'
+              className='bg-white px-8 text-sm font-semibold text-black sm:w-auto border'
               onClick={() => closeDialog()}
               label='No'
             />

@@ -8,6 +8,7 @@ import { IoMdAdd } from "react-icons/io";
 import { BGS, formatDate, PRIOTITYSTYELS, TASK_TYPE } from '../utils';
 import TaskDialog from './task/TaskDialog';
 import UserInfo from './UserInfo';
+import AddSubTask from './task/AddSubTask';
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp/>,
@@ -30,6 +31,7 @@ const TaskCard = ({ task }) => {
 
           {user?.isAdmin && <TaskDialog task={task}/>}
         </div>
+        
         <>
         <div className='flex items-center gap-2'>
           <div className={clsx("w-4 h-4 rounded-full", TASK_TYPE[task.stage])}/>
@@ -63,7 +65,7 @@ const TaskCard = ({ task }) => {
             {task?.team?.map((m, index) => (
               <div
               key={index}
-              className={clsx("w-7 h-7 rounded-full text-white flex items-center justify-center text-sm -mr-1", BGS[index % BGS?.length])}
+              className={clsx("w-7 h-7 rounded-full text-white flex items-center justify-center text-sm mr-1", BGS[index % BGS?.length])}
               >
                 <UserInfo user={m}/>
               </div>
@@ -94,14 +96,17 @@ const TaskCard = ({ task }) => {
 
         <div className='w-full pb-2'>
           <button
-          disabled={user.isAdmin ? false : true}
-          className='w-full flex gap-4 items-center text-sm text-white disabled:cursor-not-allowed disabled::text-grey_200'>
+            onClick={() => setOpen(true)}
+            disabled={user.isAdmin ? false : true}
+            className='w-full flex gap-4 items-center text-sm text-white disabled:cursor-not-allowed disabled::text-grey_200'
+            >
             <IoMdAdd className='text-lg'/>
             <span>ADD SUBTASK</span>
           </button>
         </div>
       </div>
-      {/* <AddSubTask open={open} setOpen={setOpen} id={task._id}/> */}
+
+      <AddSubTask open={open} setOpen={setOpen} id={task._id}/>
     </>
   )  
 }

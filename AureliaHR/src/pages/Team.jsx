@@ -5,7 +5,7 @@ import { IoMdAdd } from 'react-icons/io'
 import { getInitials } from '../utils'
 import clsx from 'clsx'
 import Button from '../components/Button'
-// import ConfirmatioDialog, { UserAction } from "../components/Dialogs";
+import ConfirmatioDialog, { UserAction }from "../components/Dialogs";
 // import AddUser from "../components/AddUser";
 
 const Team = () => {
@@ -112,7 +112,7 @@ const Team = () => {
         </div>
       </div>
       
-      {/* <AddUser
+      <AddUser
         open={open}
         setOpen={setOpen}
         userData={selected}
@@ -129,7 +129,7 @@ const Team = () => {
         open={openAction}
         setOpen={setOpenAction}
         onClick={userActionHandler}
-      /> */}
+      />
     </>
   )
 }

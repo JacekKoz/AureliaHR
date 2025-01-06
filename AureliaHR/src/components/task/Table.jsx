@@ -10,6 +10,7 @@ import { BGS, formatDate, PRIOTITYSTYELS, TASK_TYPE } from '../../utils';
 import { tasks } from '../../assets/data';
 import Button from '../Button';
 import UserInfo from '../UserInfo';
+import ConfirmatioDialog from '../Dialogs';
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp/>,
@@ -22,7 +23,12 @@ const Table = ({ tasks }) => {
   const [openDialog, setOpenDialog] = useState(false)
   const [selected, setSelected] = useState(null)
 
-  const deleteClicks = () => {}
+  const deleteClicks = (id) => {
+    setSelected(id)
+    setOpenDialog(true)
+  }
+
+  const deleteHandler = () =>{}
 
   const TableHeader = () => (
     <thead className='w-full border-b border-grey_300'>
@@ -134,11 +140,11 @@ const Table = ({ tasks }) => {
         </div>
       </div>
 
-      {/* <ConfirmatioDialog
+      <ConfirmatioDialog
         open={openDialog}
         setOpen={setOpenDialog}
         onClick={deleteHandler}
-      /> */}
+      />
     </>
   )
 }

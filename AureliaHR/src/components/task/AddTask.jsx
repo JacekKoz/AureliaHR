@@ -62,8 +62,8 @@ const AddTask = ({ open, setOpen }) => {
             
             <div className='flex gap-4'>
               <SelectList
-                label = "Task Stage"
-                list={LISTS}
+                label='Task Stage'
+                lists={LISTS}
                 selected={stage}
                 setSelected={setStage}
               />
