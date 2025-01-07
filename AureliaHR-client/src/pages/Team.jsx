@@ -6,6 +6,7 @@ import { getInitials } from '../utils'
 import clsx from 'clsx'
 import Button from '../components/Button'
 import ConfirmatioDialog, { UserAction }from "../components/Dialogs";
+import AddUser from '../components/AddUser'
 // import AddUser from "../components/AddUser";
 
 const Team = () => {
@@ -61,6 +62,7 @@ const Team = () => {
 
       <td>
         <button
+          // onClick={() => userStatusClick(user)}
           className={clsx('w-fit px-4 py-1 rounded-full', user?.isActive ? "bg-accent_color_green" : "bg-accent_color_yellow")}
         >
           {user?.isActive ? "Active" : "Disabled"}

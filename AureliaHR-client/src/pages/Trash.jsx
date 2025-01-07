@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import Title from '../components/Title';
 import { tasks } from '../assets/data';
 import ConfirmatioDialog from '../components/Dialogs';
+import AddUser from '../components/AddUser';
 // import AddUser from '../components/AddUser';
 
 
@@ -23,7 +24,7 @@ const Trash = () => {
   const [ type, setType ] = useState("delete")
   const [ selected, setSelected ] = useState("")
 
-  const deleteAllClisk = () => {
+  const deleteAllClick = () => {
     setType("deleteAll")
     setMsg("Are you sure you want to delete all?")
     setOpenDialog(true)
