@@ -17,6 +17,7 @@ const authSlice = createSlice ({
       localStorage.setItem('userInfo', JSON.stringify(action.payload))
     },
     logout: (state, action) => {
+      state.user = null
       localStorage.removeItem("userInfo")
     },
     setOpenSidebar: (state, action) => {

@@ -1,10 +1,10 @@
-import express from 'express'
-import  userRouters from './userRouters'
-import taskRouters from './taskRoutes'
+import express from "express";
+import userRoutes from "./userRoutes.js";
+import taskRoutes from "./taskRoutes.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.use("/user", userRouters)
-router.use('/task', taskRouters)
+router.use("/user", userRoutes); //api/user/login
+router.use("/task", taskRoutes);
 
-export default router
+export default router;
