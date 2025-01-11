@@ -234,7 +234,7 @@ export const activateUserProfile = async (req, res) => {
 }
 
 export const deleteUserProfile = async (req, res) => {
-  try{
+  try {
     const { id } = req.params
 
     await User.findByIdAndDelete(id)

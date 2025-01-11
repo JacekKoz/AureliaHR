@@ -76,7 +76,7 @@ export function UserAction({ open, setOpen, onClick = () => {} }) {
       <ModalWrapper open={open} setOpen={closeDialog}>
         <div className='py-4 w-full flex flex-col gap-4 items-center justify-center'>
           <Dialog.Title as='h3' className=''>
-            <p className={clsx("p-3 rounded-full ", "text-white bg-red")}>
+            <p className={clsx("p-3 rounded-full text-white bg-red")}>
               <FaQuestion size={60} />
             </p>
           </Dialog.Title>
@@ -85,7 +85,7 @@ export function UserAction({ open, setOpen, onClick = () => {} }) {
             {"Are you sure you want to activate or deactivate this account?"}
           </p>
 
-          <div className='bg-grey_200 py-3 sm:flex sm:flex-row-reverse gap-4'>
+          <div className='py-3 sm:flex sm:flex-row-reverse gap-4'>
             <Button
               type='button'
               className={clsx(
