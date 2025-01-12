@@ -75,11 +75,16 @@ export const duplicateTask = async (req, res) => {
       text = text + ` and ${task.team.length - 1} others.`;
     }
 
+    let taskDateString = "";
+    if (task.date instanceof Date) {
+      taskDateString = task.date.toDateString();
+    } else {
+      taskDateString = "Date not available";
+    }
+
     text =
       text +
-      ` The task priority is set a ${
-        task.priority
-      } priority, so check and act accordingly. The task date is ${task.date.toDateString()}. Thank you!!!`;
+      ` The task priority is set a ${task.priority} priority, so check and act accordingly. The task date is ${taskDateString}. Thank you!!!`;
 
     await Notice.create({
       team: task.team,
@@ -95,6 +100,7 @@ export const duplicateTask = async (req, res) => {
     return res.status(400).json({ status: false, message: error.message });
   }
 };
+
 
 export const postTaskActivity = async (req, res) => {
   try {

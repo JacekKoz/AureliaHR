@@ -40,7 +40,7 @@ export const summary = {
         {
           title: "AureliaHR Dashboard",
           date: "2024-02-09T00:00:00.000Z",
-          tag: "tutorial",
+          tag: "testing",
           _id: "65c5f153b5204a81bde866c8",
         },
       ],
@@ -626,7 +626,7 @@ export const tasks = [
       {
         title: "AureliaHR Dashboard",
         date: "2024-02-09T00:00:00.000Z",
-        tag: "tutorial",
+        tag: "testing",
         _id: "65c5f153b5204a81bde866c8",
       },
     ],

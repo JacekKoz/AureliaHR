@@ -37,8 +37,9 @@ const TaskCard = ({ task }) => {
           <div className={clsx("w-4 h-4 rounded-full", TASK_TYPE[task.stage])}/>
         <h4 className='line-clamp-1'>{task?.title}</h4>
         </div>
-        <span className='tex-sm text-grey_200'>
-          {formatDate(new Date(task?.date))}
+        <span className='text-sm text-grey_200'>
+        {/* <pre>{JSON.stringify(task, null, 2)}</pre> */}
+        {formatDate(new Date(task.activities[0]?.date))}
         </span>
         </>
 

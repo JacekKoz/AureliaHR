@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose"
 const taskSchema = new Schema(
   {
     title: { type: String, required: true},
-    title: { type: Date, default: new Date()},
+    // title: { type: Date, default: new Date()},
     priority: {
       type: String,
       default: "normal",
