@@ -15,7 +15,7 @@ import { toast } from "sonner";
 const TaskDialog = ({ task }) => {
   const [ open, setOpen ] = useState(false)
   const [ openEdit, setOpenEdit ] = useState(false)
-  const [ openDialog, setOpenDialog ] = useState(false)
+  const [ openDeleteDialog, setOpenDeleteDialog ] = useState(false)
   
   const navigate = useNavigate()
 
@@ -39,7 +39,7 @@ const TaskDialog = ({ task }) => {
   }
 
   const deleteClicks = () => {
-    setOpenDialog(true)
+    setOpenDeleteDialog(true)
   }
 
   const deleteHandler = async () => {
@@ -52,7 +52,7 @@ const TaskDialog = ({ task }) => {
       toast.success(res?.message)
 
       setTimeout(() => {
-        setOpenDialog(false)
+        setOpenDeleteDialog(false)
         window.location.reload()
       }, 500)
     } catch (err) {
@@ -140,8 +140,8 @@ const TaskDialog = ({ task }) => {
       <AddSubTask open={open} setOpen={setOpen}/>
 
       <ConfirmatioDialog
-        open={open}
-        setOpen={setOpen}
+        open={openDeleteDialog}
+        setOpen={setOpenDeleteDialog}
         onClick={deleteHandler}
       />
     </>
