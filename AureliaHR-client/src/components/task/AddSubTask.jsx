@@ -101,3 +101,5 @@ const AddSubTask = ({ open, setOpen, id }) => {
 }
 
 export default AddSubTask
+
+// Todo Naprawić sub task dodać fukcnje trash i zoabcyzć czy pare funkcu jeszcze zdąże dodać 
