@@ -14,11 +14,11 @@ const AddSubTask = ({ open, setOpen, id }) => {
     formState: { errors },
   } = useForm()
   
-  const [addSbTask] = useCreateSubTaskMutation()
+  const [addSubTask] = useCreateSubTaskMutation()
   
   const handleOnSubmit = async (data) => {
     try {
-      const res = await addSbTask({ data, id }).unwrap()
+      const res = await addSubTask({ data, id }).unwrap()
 
       toast.success(res.message)
       
@@ -101,5 +101,3 @@ const AddSubTask = ({ open, setOpen, id }) => {
 }
 
 export default AddSubTask
-
-// Todo Naprawić sub task dodać fukcnje trash i zoabcyzć czy pare funkcu jeszcze zdąże dodać 

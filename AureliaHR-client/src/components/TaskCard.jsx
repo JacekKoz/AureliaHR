@@ -19,7 +19,6 @@ const ICONS = {
 const TaskCard = ({ task }) => {
   const { user } = useSelector((state) => state.auth)
   const [ open, setOpen ] = useState(false)
-
   return (
     <>
       <div className='w-full h-fit bg-grey_300 shadow-md p-4 rounded text-white font-poppins'>
@@ -73,17 +72,16 @@ const TaskCard = ({ task }) => {
             ))}
           </div>
         </div>
-         
-        {task?.subTasks?.length > 0 ? (
+        {task?.subTask?.length > 0 ? (
           <div className='py-4 border-t border-grey_200'>
-            <h5 className='text-base line-clamp-1 text-grey_100'>{task?.subTasks[0].title}</h5>
+            <h5 className='text-base line-clamp-1 text-grey_100'>{task?.subTask[0].title}</h5>
             
             <div className='p-4 space-x-8'>
               <span className='text-sm text-grey_100'>
-                {formatDate(new Date(task?.subTasks[0].date))}
+                {formatDate(new Date(task?.subTask[0].date))}
               </span>
               <span className='bg-accent_color_green/10 px-3 py-1 rounded-full text-accent_color_green font-medium'>
-                {task?.subTasks[0].tag}
+                {task?.subTask[0].tag}
               </span>
             </div>
           </div>

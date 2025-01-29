@@ -115,7 +115,7 @@ export const postTaskActivity = async (req, res) => {
       activity,
       by: userId,
     };
-
+    
     task.activities.push(data);
 
     await task.save();
@@ -259,19 +259,26 @@ export const getTask = async (req, res) => {
 export const createSubTask = async (req, res) => {
   try {
     const { title, tag, date } = req.body;
-
+    
     const { id } = req.params;
+    console.log(req.params)
 
     const newSubTask = {
       title,
       date,
       tag,
     };
-
+    
     const task = await Task.findById(id);
+    console.log(task)
 
-    task.subTasks.push(newSubTask);
+    if (!Array.isArray(task.subTasks)) {
+      task.subTasks = [];
+    }
 
+    // const subTasks = []
+    task.subTask.push(newSubTask)
+    
     await task.save();
 
     res
