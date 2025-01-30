@@ -62,7 +62,7 @@ export const duplicateTask = async (req, res) => {
     });
 
     newTask.team = task.team;
-    newTask.subTasks = task.subTasks;
+    newTask.subTask = task.subTask; //Zmieniłem subTasks na subTask
     newTask.assets = task.assets;
     newTask.priority = task.priority;
     newTask.stage = task.stage;
