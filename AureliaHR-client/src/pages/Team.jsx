@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Title from '../components/Title'
-import { summary } from '../assets/data'
 import { IoMdAdd } from 'react-icons/io'
 import { getInitials } from '../utils'
 import clsx from 'clsx'

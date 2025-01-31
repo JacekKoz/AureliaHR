@@ -53,7 +53,7 @@ const ICONS = {
     <BiSolidMessageRounded className='h-5 w-5 text-black group-hover:text-border_color' />
   ),
 };
-// todo Coś tutaj nie działo poniewaz nie mam notyfikacji jutro musze to naprawić zobaczymy czy dam radę
+
 
 const NotificationPanel = () => {
   const [open, setOpen] = useState(false)
