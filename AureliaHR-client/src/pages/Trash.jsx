@@ -7,6 +7,10 @@ import Title from '../components/Title';
 import { tasks } from '../assets/data';
 import ConfirmatioDialog from '../components/Dialogs';
 import AddUser from '../components/AddUser';
+import { useDeleteRestoreTaskMutation, useGetAllTaskQuery } from '../redux/slices/api/taskApiSlice';
+import Loading from '../components/Loading';
+import { toast } from 'sonner';
+import { FaFontAwesome } from 'react-icons/fa';
 // import AddUser from '../components/AddUser';
 
 
@@ -23,6 +27,60 @@ const Trash = () => {
   const [ msg, setMsg ] = useState(null)
   const [ type, setType ] = useState("delete")
   const [ selected, setSelected ] = useState("")
+
+  const { data, isLoading, refetch} = useGetAllTaskQuery({
+    strQuery: "",
+    isTrashed: "true",
+    search: ""
+  })
+  console.log(data)
+  const [deleteRestoreTask] = useDeleteRestoreTaskMutation()
+
+  const deleteRestoreHandler = async() => {
+    try {
+      let result
+
+      switch (type) {
+        case "delete":
+          result = await deleteRestoreTask({
+            id: selected,
+            actionType: "delete",
+          }).unwrap()
+          break
+        
+        case "deleteAll":
+          result = await deleteRestoreTask({
+            id: selected,
+            actionType: "deleteAll",
+          }).unwrap()
+          break
+
+        case "restore":
+          result = await deleteRestoreTask({
+            id: selected,
+            actionType: "restore",
+          }).unwrap()
+          break
+
+        case "restoreAll":
+          result = await deleteRestoreTask({
+            id: selected,
+            actionType: "restoreAll",
+          }).unwrap()
+          break
+      }
+
+      toast.success(result.message)
+
+      setTimeout(() => {
+        setOpenDialog(false)
+        refetch()
+      }, 500)
+    } catch (error) {
+      console.log(error)
+      toast.error(error?.data?.message || error.error)
+    }
+  }
 
   const deleteAllClick = () => {
     setType("deleteAll")
@@ -49,6 +107,13 @@ const Trash = () => {
     setOpenDialog(true)
   }
 
+  if (isLoading)
+    return (
+      <div className='py-10'>
+        <Loading/>
+      </div>
+    )
+
   const TableHeader = () => (
     <thead className='border-b border-grey_200'>
       <tr className='text-white text-left'>
@@ -59,6 +124,7 @@ const Trash = () => {
       </tr>
     </thead>
   )
+  
 
   const TableRow = ({ item }) => (
     <tr className='border-b border-grey_200 text-white hover:bg-grey_400'>
@@ -102,6 +168,7 @@ const Trash = () => {
   )
 
   return (
+    
     <>
     <div className='w-full md:px-1 px-0 mb-6 text-white font-poppins'>
       <div className='flex items-center justify-between mb-8 '>
@@ -127,7 +194,7 @@ const Trash = () => {
           <table className='w-full mb-5'>
             <TableHeader />
             <tbody>
-              {tasks?.map((tk, id) => (
+              {data?.tasks?.map((tk, id) => (
                 <TableRow key={id} item={tk} />
               ))}
             </tbody>

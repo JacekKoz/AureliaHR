@@ -94,7 +94,7 @@ const TaskDetails = () => {
 
   const [selected, setSelected] = useState(0);
   const task = data?.task;
-  console.log(data)
+
   if (isLoading)
     return (
       <div className="py-10">
@@ -238,6 +238,7 @@ const TaskDetails = () => {
 };
 
 const Activities = ({ activity, id, refetch }) => {
+
   const [selected, setSelected] = useState(act_types[0]);
   const [text, setText] = useState("");
 
@@ -264,7 +265,7 @@ const Activities = ({ activity, id, refetch }) => {
       toast.error(error?.data?.message || error.error)
     }
   };
-
+  
   const Card = ({ item }) => {
     return (
       <div className="flex space-x-4 ">
@@ -278,9 +279,9 @@ const Activities = ({ activity, id, refetch }) => {
         </div>
 
         <div className="flex flex-col gap-y-1 mb-8">
-          <p className="font-poppins">{item?.by?.name}</p>
+          <p className="font-poppins">{item?.by?.names}</p>
           <div className="text-grey_200 space-y-2">
-            <span className="capitalize text-red">{item?.type}</span>
+            <span className="capitalize">{item?.type} </span>
             <span className="text-sm">{moment(item?.date).fromNow()}</span>
           </div>
           <div className="text-grey_200">{item?.activity}</div>
