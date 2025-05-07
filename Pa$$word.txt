@@ -1,8 +1,0 @@
-Mongodb:
-Username - jacekkozlowski
-Password - FlBeTqIQqRdYIpYs
-
-
-
-
-const zmienna = isActive ? console.log("tak") : console.log("nie)
